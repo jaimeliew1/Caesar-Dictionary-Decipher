@@ -12,7 +12,7 @@ lookup.
 with open('words_alpha.txt') as f:
     Dictionary = [x.upper() for x in f.read().split('\n')]
 
-def caesarCipher(string, shift):
+def caesar(string, shift):
     # Returns a caesar cipher for a given shift index
     # Parameters
     # string: the string to cipher
@@ -29,7 +29,7 @@ def caesarCipher(string, shift):
             out += chr(c)
     return out
 
-def caesarDictionaryDecipher(original):
+def dictDecipher(original):
     # finds the caesar cypher with the most words in the dictionary and
     # returns that.
 
@@ -37,7 +37,7 @@ def caesarDictionaryDecipher(original):
     bestShift = 0
     for i in range(26):
         score = 0
-        string = caesarCipher(original, i)
+        string = caesar(original, i)
 
         for word in string.split(' '):
             if word in Dictionary:
@@ -45,12 +45,12 @@ def caesarDictionaryDecipher(original):
         if score > scoremax:
             scoremax, bestShift = score, i
 
-    return caesarCipher(original, bestShift)
+    return caesar(original, bestShift)
 
 
 if __name__ == '__main__':
     string = 'HDTR. B PBEE LXX RHN TM RHNKL. LTOX LHFX LITSEX YHK FX :)'
-    out = caesarDictionaryDecipher(string)
+    out = dictDecipher(string)
     print(out)
 
 
