@@ -4,7 +4,7 @@ lookup.
 
 # Example
 ```python
-from CaesarDictionaryDecipher import dictDecipher':
+from CaesarDictionaryDecipher import dictDecipher
 
 print(dictDecipher('MJQQT YMNX NX F YJXY'))
 ```
