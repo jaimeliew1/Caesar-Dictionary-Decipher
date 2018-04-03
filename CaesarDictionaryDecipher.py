@@ -29,23 +29,18 @@ def caesar(string, shift):
             out += chr(c)
     return out
 
-def dictDecipher(original):
+def dictDecipher(string, delim=' '):
     # finds the caesar cypher with the most words in the dictionary and
     # returns that.
 
-    scoremax = 0
-    bestShift = 0
+    scoremax, bestShift = 0, 0
     for i in range(26):
-        score = 0
-        string = caesar(original, i)
-
-        for word in string.split(' '):
-            if word in Dictionary:
-                score += 1
+        cipher = caesar(string, i)
+        score = sum(word in Dictionary for word in cipher.split(delim))
         if score > scoremax:
             scoremax, bestShift = score, i
 
-    return caesar(original, bestShift)
+    return caesar(string, bestShift)
 
 
 if __name__ == '__main__':
